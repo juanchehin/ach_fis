@@ -69,7 +69,7 @@
             // 
             this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button2.Location = new System.Drawing.Point(393, 12);
+            this.button2.Location = new System.Drawing.Point(449, 12);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(175, 120);
             this.button2.TabIndex = 7;
@@ -78,7 +78,7 @@
             // button3
             // 
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(218, 166);
+            this.button3.Location = new System.Drawing.Point(218, 187);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(169, 120);
             this.button3.TabIndex = 8;
@@ -87,7 +87,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(282, 139);
+            this.label1.Location = new System.Drawing.Point(282, 135);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 9;
@@ -96,7 +96,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(424, 139);
+            this.label2.Location = new System.Drawing.Point(462, 135);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(124, 13);
             this.label2.TabIndex = 10;
@@ -105,7 +105,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(282, 294);
+            this.label3.Location = new System.Drawing.Point(282, 314);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(28, 13);
             this.label3.TabIndex = 11;
@@ -114,35 +114,36 @@
             // button4
             // 
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(583, 12);
+            this.button4.Location = new System.Drawing.Point(669, 12);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(169, 120);
             this.button4.TabIndex = 12;
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(638, 139);
+            this.label4.Location = new System.Drawing.Point(694, 135);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 13);
+            this.label4.Size = new System.Drawing.Size(127, 13);
             this.label4.TabIndex = 13;
-            this.label4.Text = "Empleados";
+            this.label4.Text = "Empleados/Profesionales";
             // 
             // button5
             // 
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.Location = new System.Drawing.Point(399, 166);
+            this.button5.Location = new System.Drawing.Point(449, 187);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(169, 120);
+            this.button5.Size = new System.Drawing.Size(175, 120);
             this.button5.TabIndex = 14;
             this.button5.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(457, 294);
+            this.label5.Location = new System.Drawing.Point(502, 314);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 13);
             this.label5.TabIndex = 15;
@@ -152,7 +153,7 @@
             // 
             this.btnAyuda.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAyuda.BackgroundImage")));
             this.btnAyuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAyuda.Location = new System.Drawing.Point(709, 338);
+            this.btnAyuda.Location = new System.Drawing.Point(828, 388);
             this.btnAyuda.Name = "btnAyuda";
             this.btnAyuda.Size = new System.Drawing.Size(43, 41);
             this.btnAyuda.TabIndex = 16;
@@ -162,7 +163,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(777, 391);
+            this.ClientSize = new System.Drawing.Size(883, 441);
             this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button5);
@@ -177,8 +178,8 @@
             this.Controls.Add(this.pictureBox2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "formPrincipal";
-            this.Text = "                                                                                 " +
-    "               ..:: Dashboard ::..";
+            this.Text = " ";
+            this.Load += new System.EventHandler(this.formPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

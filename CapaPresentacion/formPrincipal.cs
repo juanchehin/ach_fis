@@ -16,5 +16,17 @@ namespace CapaPresentacion
         {
             InitializeComponent();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            formProfesionales frm = new formProfesionales();
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
+        }
+
+        private void formPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

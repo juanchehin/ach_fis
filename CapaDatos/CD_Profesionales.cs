@@ -8,53 +8,65 @@ using System.Threading.Tasks;
 
 namespace CapaDatos
 {
-    public class CD_Empleados
+    public class CD_Profesionales
     {
-        private int _IdEmpleado;
-        private string _Nombre;
+        private int _IdProfesional;
         private string _Apellidos;
-        private string _DNI;
-        private string _EstadoEmp;
-        private string _Direccion;
+        private string _Nombres;
+        private string _Sexo;
+        private DateTime _FechaNac;
         private string _Telefono;
-        private string _FechaNac;
+        private string _Email;
+        private string _Localidad;
+        private string _Calle;
+        private string _DNI;
+        private string _EstadoPer;
+        private string _Observaciones;
 
         private string _TextoBuscar;
 
 
 
-        public int IdEmpleado { get => _IdEmpleado; set => _IdEmpleado = value; }
-        public string Nombre { get => _Nombre; set => _Nombre = value; }
+        public int IdProfesional { get => _IdProfesional; set => _IdProfesional = value; }
         public string Apellidos { get => _Apellidos; set => _Apellidos = value; }
-        public string DNI { get => _DNI; set => _DNI = value; }
-        public string EstadoEmp { get => _EstadoEmp; set => _EstadoEmp = value; }
-        public string Direccion { get => _Direccion; set => _Direccion = value; }
-        public string Telefono { get => _Telefono; set => _Telefono = value; }
-        public string TextoBuscar { get => _TextoBuscar; set => _TextoBuscar = value; }
-        public string FechaNac { get => _FechaNac; set => _FechaNac = value; }
 
+        public string Nombres { get => _Nombres; set => _Nombres = value; }
+        public string Sexo { get => _Sexo; set => _Sexo = value; }
+        public DateTime FechaNac { get => _FechaNac; set => _FechaNac = value; }
+        public string Telefono { get => _Telefono; set => _Telefono = value; }
+        public string Email { get => _Email; set => _Email = value; }
+        public string Localidad { get => _Localidad; set => _Localidad = value; }
+
+        public string Calle { get => _Calle; set => _Calle = value; }
+
+        public string DNI { get => _DNI; set => _DNI = value; }
+        public string EstadoPer { get => _EstadoPer; set => _EstadoPer = value; }
+        public string Observaciones { get => _Observaciones; set => _Observaciones = value; }
+
+        public string TextoBuscar { get => _TextoBuscar; set => _TextoBuscar = value; }
         //Constructores
-        public CD_Empleados()
+        public CD_Profesionales()
         {
 
         }
 
-        public CD_Empleados(int IdEmpleado, string Nombre, string Apellidos, string DNI, string EstadoEmp, string Direccion, string Telefono, string FechaNac)
+        /*public CD_Profesionales(int IdProfesional, string Nombres, string Apellidos, string DNI, string EstadoPer,
+            string Telefono, DateTime FechaNac,string Observaciones)
         {
-            this.IdEmpleado = IdEmpleado;
-            this.Nombre = Nombre;
+            this.IdProfesional = IdProfesional;
+            this.Nombres = Nombres;
             this.Apellidos = Apellidos;
             this.Apellidos = Apellidos;
             this.DNI = DNI;
-            this.EstadoEmp = EstadoEmp;
-            this.Direccion = Direccion;
+            this.EstadoPer = EstadoPer;
             this.Telefono = Telefono;
             this.FechaNac = FechaNac;
+            this.Observaciones = Observaciones;
 
-        }
+        }*/
 
         // ==================================================
-        //  Permite devolver todos los empleados activos de la BD
+        //  Permite devolver todos los profeisonales activos de la BD
         // ==================================================
         private CD_Conexion conexion = new CD_Conexion();
 
@@ -63,12 +75,12 @@ namespace CapaDatos
         MySqlCommand comando = new MySqlCommand();
 
 
-        public DataTable Mostrar()
+        public DataTable DameProfesionales()
         {
 
             comando.Connection = conexion.AbrirConexion();
             comando.CommandType = CommandType.StoredProcedure;
-            comando.CommandText = "bsp_dame_empleados";
+            comando.CommandText = "bsp_dame_profesionales";
 
             tabla.Clear();
             leer = comando.ExecuteReader();
@@ -79,10 +91,10 @@ namespace CapaDatos
             return tabla;
 
         }
-
-        //Métodos
-        //Insertar
-        public string Insertar(CD_Empleados Empleado)
+        // =========================================
+        // Metodo insertar profesional 
+        // =========================================
+        /*public string Insertar(CD_Profesionales Profesional)
         {
             string rpta = "";
             try
@@ -153,10 +165,11 @@ namespace CapaDatos
             }
             return rpta;
 
-        }
-
-        // Metodo ELIMINAR Empleado (da de baja)
-        public string Eliminar(CD_Empleados Empleado)
+        }*/
+        // =========================================
+        // Metodo ELIMINAR profesional (da de baja)
+        // =========================================
+        public string Eliminar(CD_Profesionales Profesional)
         {
             string rpta = "";
             try
@@ -165,14 +178,14 @@ namespace CapaDatos
 
                 comando.Connection = conexion.AbrirConexion();
                 comando.CommandType = CommandType.StoredProcedure;
-                comando.CommandText = "bsp_eliminar_empleado";
+                comando.CommandText = "bsp_eliminar_profesional";
 
-                MySqlParameter pIdEmpleado = new MySqlParameter();
-                pIdEmpleado.ParameterName = "@pIdEmpleado";
-                pIdEmpleado.MySqlDbType = MySqlDbType.Int32;
+                MySqlParameter pIdProfesional = new MySqlParameter();
+                pIdProfesional.ParameterName = "@pIdProfesional";
+                pIdProfesional.MySqlDbType = MySqlDbType.Int32;
                 // pIdEmpleado.Size = 60;
-                pIdEmpleado.Value = Empleado.IdEmpleado;
-                comando.Parameters.Add(pIdEmpleado);
+                pIdProfesional.Value = Profesional.IdProfesional;
+                comando.Parameters.Add(pIdProfesional);
 
                 //Ejecutamos nuestro comando
 
@@ -191,10 +204,12 @@ namespace CapaDatos
             }
             return rpta;
         }
-
-        public string Editar(CD_Empleados Empleado)
+        // =========================================
+        // Edita un profesional
+        // =========================================
+        /*public string Editar(CD_Profesionales Profesional)
         {
-            Console.WriteLine("Produco.IdProducto es 1 : " + Empleado.IdEmpleado);
+            Console.WriteLine("Produco.IdProducto es 1 : " + Profesional.IdProfesional);
             string rpta = "";
             comando.Parameters.Clear();// si no ponerlo al comienzo de esta funcion
             try
@@ -278,9 +293,11 @@ namespace CapaDatos
             }
             comando.Parameters.Clear();
             return rpta;
-        }
-
-        public DataTable BuscarEmpleado(CD_Empleados Empleado)
+        }*/
+        // =========================================
+        // Busca un solo profesional
+        // =========================================
+        /*public DataTable BuscarEmpleado(CD_Profesionales Profesional)
         {
             try
             {
@@ -313,22 +330,23 @@ namespace CapaDatos
             }
             return tabla;
 
-        }
-
-        // Devuelve un solo producto dado un ID
-        public DataTable MostrarEmpleado(int IdEmpleado)
+        }*/
+        // =========================================
+        // Devuelve un solo profesional dado un ID
+        // =========================================
+        /*public DataTable DameProfesional(int IdProfesional)
         {
-            Console.WriteLine("IdEmpleado en capa datos es : " + IdEmpleado);
+            Console.WriteLine("IdProfesional en capa datos es : " + IdProfesional);
             comando.Connection = conexion.AbrirConexion();
             comando.CommandType = CommandType.StoredProcedure;
-            comando.CommandText = "bsp_dame_empleado";
+            comando.CommandText = "bsp_dame_profesional";
 
-            MySqlParameter pIdEmpleado = new MySqlParameter();
-            pIdEmpleado.ParameterName = "@pIdEmpleado";
-            pIdEmpleado.MySqlDbType = MySqlDbType.Int32;
+            MySqlParameter pIdProfesional = new MySqlParameter();
+            pIdProfesional.ParameterName = "@pIdProfesional";
+            pIdProfesional.MySqlDbType = MySqlDbType.Int32;
             // pIdProducto.Size = 60;
-            pIdEmpleado.Value = IdEmpleado;
-            comando.Parameters.Add(pIdEmpleado);
+            pIdProfesional.Value = IdProfesional;
+            comando.Parameters.Add(pIdProfesional);
 
             leer = comando.ExecuteReader();
             tabla.Load(leer);
@@ -341,6 +359,6 @@ namespace CapaDatos
 
         }
 
-
+        */
     }
 }

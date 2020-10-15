@@ -9,34 +9,41 @@ using CapaDatos;
 
 namespace CapaNegocio
 {
-    public class CN_Empleados
+    public class CN_Profesionales
     {
-        private CD_Empleados objetoCD = new CD_Empleados();
+        private CD_Profesionales objetoCD = new CD_Profesionales();
 
         //Método Insertar que llama al método Insertar de la clase DArticulo
         //de la CapaDatos
-        public static string Insertar(string Nombre, string Apellidos, string DNI, string Direccion, string Telefono, string FechaNac)
+        public static string Insertar(string Apellidos,string Nombres, string Sexo,DateTime FechaNac,
+            string Telefono, string Email,string Localidad,string Calle,string DNI,
+            string Observaciones)
         {
             // Console.WriteLine("En insertar , nombre es " + nombre);
 
-            CD_Empleados Obj = new CD_Empleados();
-            Obj.Nombre = Nombre;
+            CD_Profesionales Obj = new CD_Profesionales();
             Obj.Apellidos = Apellidos;
-            Obj.DNI = DNI;
-            Obj.Direccion = Direccion;
+            Obj.Nombres = Nombres;
+            Obj.Sexo = Sexo;
+            Obj.FechaNac = FechaNac;
             Obj.Telefono = Telefono;
+            Obj.Email = Email;
+            Obj.Localidad = Localidad;
+            Obj.Calle = Calle;
+            Obj.DNI = DNI;
             Obj.FechaNac = FechaNac;
 
-            return Obj.Insertar(Obj);
+            return "ok"; //.Insertar(Obj);
         }
-
-        public DataTable MostrarEmp()
+        
+        public DataTable DameProfesionales()
         {
 
             DataTable tabla = new DataTable();
-            tabla = objetoCD.Mostrar();
+            tabla = objetoCD.DameProfesionales();
             return tabla;
         }
+        /*
         public static string Eliminar(int IdEmpleado)
         {
             CD_Empleados Obj = new CD_Empleados();
@@ -80,6 +87,6 @@ namespace CapaNegocio
             return Obj.BuscarEmpleado(Obj);
         }
 
-
+        */
     }
 }
