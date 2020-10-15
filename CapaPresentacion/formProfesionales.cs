@@ -36,16 +36,12 @@ namespace CapaPresentacion
         //Limpiar todos los controles del formulario
 
         //Mostrar Mensaje de Confirmación
-        private void MensajeOk(string mensaje)
-        {
-            MessageBox.Show(mensaje, "Act Fis", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-        }
-        //Mostrar Mensaje de Error
-        private void MensajeError(string mensaje)
+        private void formProfesionales_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(mensaje, "Act Fis", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            DameProfesionales();
         }
+
 
         private void dataListadoProfesionales_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -72,10 +68,10 @@ namespace CapaPresentacion
 
         private void btnNuevoProfesional_Click(object sender, EventArgs e)
         {
-            /*Console.WriteLine("this.IdEmpleado en click nuevo es  : " + this.IdEmpleado);
-            formNuevoEditarEmpleado frm = new formNuevoEditarEmpleado(this.IdEmpleado, true);
+            Console.WriteLine("this.IdEmpleado en click nuevo es  : " + this.idProfesional);
+            formNuevoEditarProfesional frm = new formNuevoEditarProfesional(this.idProfesional, true);
             frm.MdiParent = this.MdiParent;
-            frm.Show();*/
+            frm.Show();
             // this.Close();
         }
 
@@ -117,15 +113,67 @@ namespace CapaPresentacion
                 btnBuscar_Click(this, new EventArgs());
             }
         }
-
+        // =========================================
+        // Boton de REFRESCAR
+        // =========================================
         private void btnRefrescar_Click(object sender, EventArgs e)
         {
             this.DameProfesionales();
         }
 
-        private void formProfesionales_Load(object sender, EventArgs e)
+
+        private void btnBuscar_Click_1(object sender, EventArgs e)
         {
-            DameProfesionales();
+            this.BuscarProfesional();
+        }
+        // =========================================
+        // Boton de ELIMINAR
+        // =========================================
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult Opcion;
+                Opcion = MessageBox.Show("Realmente Desea Eliminar el producto", "Act-Fis", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                if (Opcion == DialogResult.OK)
+                {
+                    CN_Profesionales.Eliminar(this.idProfesional);
+                    this.DameProfesionales();
+                    this.MensajeOk("Se elimino de forma correcta el profesional");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+        // =========================================
+        //  Mensajes
+        // =========================================
+        private void MensajeOk(string mensaje)
+        {
+            MessageBox.Show(mensaje, "Act Fis", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+        //Mostrar Mensaje de Error
+        private void MensajeError(string mensaje)
+        {
+            MessageBox.Show(mensaje, "Act Fis", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnRefrescar_Click_1(object sender, EventArgs e)
+        {
+            this.DameProfesionales();
+        }
+
+        private void txtBuscar_KeyPress(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.BuscarProfesional();
+            }
         }
     }
 

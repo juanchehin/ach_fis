@@ -13,7 +13,7 @@ namespace CapaDatos
         private int _IdProfesional;
         private string _Apellidos;
         private string _Nombres;
-        private string _Sexo;
+        private bool _Sexo;
         private DateTime _FechaNac;
         private string _Telefono;
         private string _Email;
@@ -22,6 +22,7 @@ namespace CapaDatos
         private string _DNI;
         private string _EstadoPer;
         private string _Observaciones;
+        private string _Especialidad;
 
         private string _TextoBuscar;
 
@@ -31,7 +32,7 @@ namespace CapaDatos
         public string Apellidos { get => _Apellidos; set => _Apellidos = value; }
 
         public string Nombres { get => _Nombres; set => _Nombres = value; }
-        public string Sexo { get => _Sexo; set => _Sexo = value; }
+        public bool Sexo { get => _Sexo; set => _Sexo = value; }
         public DateTime FechaNac { get => _FechaNac; set => _FechaNac = value; }
         public string Telefono { get => _Telefono; set => _Telefono = value; }
         public string Email { get => _Email; set => _Email = value; }
@@ -42,6 +43,7 @@ namespace CapaDatos
         public string DNI { get => _DNI; set => _DNI = value; }
         public string EstadoPer { get => _EstadoPer; set => _EstadoPer = value; }
         public string Observaciones { get => _Observaciones; set => _Observaciones = value; }
+        public string Especialidad { get => _Especialidad; set => _Especialidad = value; }
 
         public string TextoBuscar { get => _TextoBuscar; set => _TextoBuscar = value; }
         //Constructores
@@ -50,8 +52,8 @@ namespace CapaDatos
 
         }
 
-        public CD_Profesionales(int IdProfesional, string Nombres, string Apellidos, string DNI, string EstadoPer,
-            string Telefono, DateTime FechaNac,string Observaciones)
+        public CD_Profesionales(int IdProfesional, string Apellidos, string Nombres,bool sexo,DateTime FechaNac, string Telefono,string Email,
+            string Localidad, string Calle,string DNI,string Observaciones,string Especialidad)
         {
             this.IdProfesional = IdProfesional;
             this.Nombres = Nombres;
@@ -62,6 +64,7 @@ namespace CapaDatos
             this.Telefono = Telefono;
             this.FechaNac = FechaNac;
             this.Observaciones = Observaciones;
+            this.Especialidad = Especialidad;
 
         }
 
@@ -103,12 +106,16 @@ namespace CapaDatos
         public string Insertar(CD_Profesionales Profesional)
         {
             string rpta = "";
+            Console.WriteLine("el Profesional.Apellidos 1 es : " + Profesional.Apellidos);
             try
             {
+
                 comando.Connection = conexion.AbrirConexion();
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.CommandText = "bsp_alta_profesional";
                 // Console.WriteLine("pNombre es : " + pNombre.Value);
+
+                Console.WriteLine("el Profesional.Apellidos es : " + Profesional.Apellidos);
 
                 MySqlParameter pApellidos = new MySqlParameter();
                 pApellidos.ParameterName = "@pApellidos";
@@ -189,9 +196,16 @@ namespace CapaDatos
                 pObservaciones.Value = Profesional.Observaciones;
                 comando.Parameters.Add(pObservaciones);
 
+                MySqlParameter pEspecialidad = new MySqlParameter();
+                pEspecialidad.ParameterName = "@pEspecialidad";
+                pEspecialidad.MySqlDbType = MySqlDbType.VarChar;
+                pEspecialidad.Size = 255;
+                pEspecialidad.Value = Profesional.Especialidad;
+                comando.Parameters.Add(pEspecialidad);
 
 
-                // Console.WriteLine("el comando es : " + comando.CommandText[0]);
+
+                // Console.WriteLine("el comando es : " + comando.Parameters);
                 //Ejecutamos nuestro comando
 
                 rpta = comando.ExecuteNonQuery() == 1 ? "OK" : "NO se Ingreso el Registro";

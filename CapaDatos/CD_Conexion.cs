@@ -23,12 +23,12 @@ namespace CapaDatos
             try
             {
                 Con.Open();
-                // MessageBox.Show("Estas conectado!");
+                //MessageBox.Show("Estas conectado!");
                 return Con;
             }
             catch(Exception e)
             {
-                // MessageBox.Show("Error Act Fis : " + e.Message);
+                //MessageBox.Show("Error Act Fis : " + e.Message);
                 return Con;
             }
         }

@@ -15,23 +15,14 @@ namespace CapaNegocio
 
         //Método Insertar que llama al método Insertar de la clase DArticulo
         //de la CapaDatos
-        public static string Insertar(string Apellidos, string Nombres, string Sexo, DateTime FechaNac,
+        public static string Insertar(string Apellidos, string Nombres, bool Sexo, DateTime FechaNac,
             string Telefono, string Email, string Localidad, string Calle, string DNI,
             string Observaciones)
         {
             // Console.WriteLine("En insertar , nombre es " + nombre);
 
-            CD_Profesionales Obj = new CD_Profesionales();
-            Obj.Apellidos = Apellidos;
-            Obj.Nombres = Nombres;
-            Obj.Sexo = Sexo;
-            Obj.FechaNac = FechaNac;
-            Obj.Telefono = Telefono;
-            Obj.Email = Email;
-            Obj.Localidad = Localidad;
-            Obj.Calle = Calle;
-            Obj.DNI = DNI;
-            Obj.FechaNac = FechaNac;
+            CD_Planes Obj = new CD_Planes();
+            
 
             return "ok"; //.Insertar(Obj);
         }

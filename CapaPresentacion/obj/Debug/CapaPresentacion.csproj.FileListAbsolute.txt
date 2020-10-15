@@ -22,3 +22,4 @@ D:\Visual Studio Programs\ach_fis\ach_fis\CapaPresentacion\obj\Debug\CapaPresent
 D:\Visual Studio Programs\ach_fis\ach_fis\CapaPresentacion\obj\Debug\CapaPresentacion.pdb
 D:\Visual Studio Programs\ach_fis\ach_fis\CapaPresentacion\bin\Debug\CapaPresentacion.exe
 D:\Visual Studio Programs\ach_fis\ach_fis\CapaPresentacion\obj\Debug\CapaPresentacion.exe
+D:\Visual Studio Programs\ach_fis\ach_fis\CapaPresentacion\obj\Debug\CapaPresentacion.formNuevoEditarProfesional.resources

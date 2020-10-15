@@ -13,13 +13,14 @@ namespace CapaNegocio
     {
         private CD_Profesionales objetoCD = new CD_Profesionales();
 
-        //Método Insertar que llama al método Insertar de la clase DArticulo
-        //de la CapaDatos
-        public static string Insertar(string Apellidos,string Nombres, string Sexo,DateTime FechaNac,
+        // =========================================
+        // Crea un profesional con todos sus datos
+        // =========================================
+        public static string Insertar(string Apellidos,string Nombres, bool Sexo,DateTime FechaNac,
             string Telefono, string Email,string Localidad,string Calle,string DNI,
-            string Observaciones)
+            string Observaciones,string Especialidad)
         {
-            // Console.WriteLine("En insertar , nombre es " + nombre);
+            Console.WriteLine("En insertar , Nombres es " + Nombres);
 
             CD_Profesionales Obj = new CD_Profesionales();
             Obj.Apellidos = Apellidos;
@@ -31,11 +32,16 @@ namespace CapaNegocio
             Obj.Localidad = Localidad;
             Obj.Calle = Calle;
             Obj.DNI = DNI;
-            Obj.FechaNac = FechaNac;
+            Obj.Observaciones = Observaciones;
+            Obj.Especialidad = Especialidad;
 
-            return "ok"; //.Insertar(Obj);
+            Console.WriteLine("Obj.Insertar(Obj) + " + Obj.Insertar(Obj));
+
+            return Obj.Insertar(Obj);
         }
-        
+        // =========================================
+        // Devuelve un profesional dado su ID
+        // =========================================
         public DataTable DameProfesionales(bool incluyeBajas)
         {
 
@@ -43,14 +49,18 @@ namespace CapaNegocio
             tabla = objetoCD.DameProfesionales(incluyeBajas);
             return tabla;
         }
-        
+        // =========================================
+        // Elimina un profesional dado su ID
+        // =========================================
         public static string Eliminar(int IdProfesional)
         {
             CD_Profesionales Obj = new CD_Profesionales();
             Obj.IdProfesional = IdProfesional;
             return Obj.Eliminar(Obj);
         }
-
+        // =========================================
+        // Devuelve un profesional dado su ID
+        // =========================================
         public DataTable MostrarProfesional(int IdProfesional)
         {
 
@@ -60,9 +70,12 @@ namespace CapaNegocio
             Console.WriteLine("tabla Rows en capa negocio es : " + tabla.Rows);
             return tabla;
         }
-
-        public static string Editar(int IdProfesional,string Apellidos, string Nombres, string Sexo,DateTime FechaNac,
-            string Telefono, string Email,string Localidad,string Calle,string DNI,string EstadoPer,string Observaciones)
+        // =========================================
+        // Edita un profesional con sus datos
+        // =========================================
+        public static string Editar(int IdProfesional,string Apellidos, string Nombres, bool Sexo,DateTime FechaNac,
+            string Telefono, string Email,string Localidad,string Calle,string DNI,string EstadoPer,string Observaciones,
+            string Especialidad)
         {
             // Console.WriteLine("Produco.IdProducto es 2 : " + IdProducto);
             CD_Profesionales Obj = new CD_Profesionales();
@@ -78,12 +91,15 @@ namespace CapaNegocio
             Obj.DNI = DNI;
             Obj.EstadoPer = EstadoPer;
             Obj.Observaciones = Observaciones;
+            Obj.Especialidad = Especialidad;
 
             // Console.WriteLine("Produco.IdProducto es 3 : " + IdProducto);
 
             return Obj.Editar(Obj);
         }
-
+        // =========================================
+        // Busca un empleado dada una cadena de texto
+        // =========================================
         public DataTable BuscarEmpleado(string textobuscar)
         {
             Console.WriteLine("textobuscar en capa negocio es : " + textobuscar);

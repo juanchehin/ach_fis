@@ -53,6 +53,7 @@
             this.btnRefrescar.Size = new System.Drawing.Size(31, 32);
             this.btnRefrescar.TabIndex = 51;
             this.btnRefrescar.UseVisualStyleBackColor = true;
+            this.btnRefrescar.Click += new System.EventHandler(this.btnRefrescar_Click_1);
             // 
             // label2
             // 
@@ -88,6 +89,7 @@
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(181, 20);
             this.txtBuscar.TabIndex = 45;
+            // this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // botonEditarListado
             // 
@@ -106,6 +108,7 @@
             this.btnEliminar.TabIndex = 46;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnBuscar
             // 
@@ -115,6 +118,7 @@
             this.btnBuscar.TabIndex = 44;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click_1);
             // 
             // dataListadoProfesionales
             // 

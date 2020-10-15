@@ -15,7 +15,7 @@ namespace CapaNegocio
 
         //Método Insertar que llama al método Insertar de la clase DArticulo
         //de la CapaDatos
-        public static string Insertar(string Apellidos, string Nombres, string Sexo, DateTime FechaNac,
+        public static string Insertar(string Apellidos, string Nombres, bool Sexo, DateTime FechaNac,
             string Telefono, string Email, string Localidad, string Calle, string DNI,
             string Observaciones)
         {
