@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CN_Clientes.cs" />
+    <Compile Include="CN_Planes.cs" />
     <Compile Include="CN_Profesionales.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

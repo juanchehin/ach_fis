@@ -40,6 +40,7 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dataListadoClientes = new System.Windows.Forms.DataGridView();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.cbIncluyeBajas = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -152,11 +153,22 @@
             this.pictureBox2.TabIndex = 31;
             this.pictureBox2.TabStop = false;
             // 
+            // cbIncluyeBajas
+            // 
+            this.cbIncluyeBajas.AutoSize = true;
+            this.cbIncluyeBajas.Location = new System.Drawing.Point(667, 118);
+            this.cbIncluyeBajas.Name = "cbIncluyeBajas";
+            this.cbIncluyeBajas.Size = new System.Drawing.Size(89, 17);
+            this.cbIncluyeBajas.TabIndex = 41;
+            this.cbIncluyeBajas.Text = "Incluye Bajas";
+            this.cbIncluyeBajas.UseVisualStyleBackColor = true;
+            // 
             // formClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(885, 486);
+            this.Controls.Add(this.cbIncluyeBajas);
             this.Controls.Add(this.btnRefrescar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblTotalClientes);
@@ -192,5 +204,6 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DataGridView dataListadoClientes;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.CheckBox cbIncluyeBajas;
     }
 }

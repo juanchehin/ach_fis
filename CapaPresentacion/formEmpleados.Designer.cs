@@ -48,7 +48,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Impact", 55F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(254, 9);
+            this.label1.Location = new System.Drawing.Point(353, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(371, 91);
             this.label1.TabIndex = 7;
@@ -69,13 +69,13 @@
             this.dataListadoClientes.Name = "dataListadoClientes";
             this.dataListadoClientes.ReadOnly = true;
             this.dataListadoClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListadoClientes.Size = new System.Drawing.Size(840, 305);
+            this.dataListadoClientes.Size = new System.Drawing.Size(982, 388);
             this.dataListadoClientes.TabIndex = 33;
             // 
             // btnRefrescar
             // 
             this.btnRefrescar.Image = ((System.Drawing.Image)(resources.GetObject("btnRefrescar.Image")));
-            this.btnRefrescar.Location = new System.Drawing.Point(821, 123);
+            this.btnRefrescar.Location = new System.Drawing.Point(963, 123);
             this.btnRefrescar.Name = "btnRefrescar";
             this.btnRefrescar.Size = new System.Drawing.Size(31, 32);
             this.btnRefrescar.TabIndex = 48;
@@ -84,7 +84,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 142);
+            this.label2.Location = new System.Drawing.Point(12, 164);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(162, 13);
             this.label2.TabIndex = 47;
@@ -92,7 +92,7 @@
             // 
             // btnNuevoCliente
             // 
-            this.btnNuevoCliente.Location = new System.Drawing.Point(398, 119);
+            this.btnNuevoCliente.Location = new System.Drawing.Point(473, 128);
             this.btnNuevoCliente.Name = "btnNuevoCliente";
             this.btnNuevoCliente.Size = new System.Drawing.Size(186, 23);
             this.btnNuevoCliente.TabIndex = 46;
@@ -101,14 +101,14 @@
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(12, 119);
+            this.txtBuscar.Location = new System.Drawing.Point(15, 131);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(181, 20);
             this.txtBuscar.TabIndex = 43;
             // 
             // botonEditarListado
             // 
-            this.botonEditarListado.Location = new System.Drawing.Point(317, 119);
+            this.botonEditarListado.Location = new System.Drawing.Point(392, 128);
             this.botonEditarListado.Name = "botonEditarListado";
             this.botonEditarListado.Size = new System.Drawing.Size(75, 23);
             this.botonEditarListado.TabIndex = 45;
@@ -117,7 +117,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(590, 119);
+            this.btnEliminar.Location = new System.Drawing.Point(665, 128);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 44;
@@ -126,7 +126,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(222, 119);
+            this.btnBuscar.Location = new System.Drawing.Point(279, 128);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 42;
@@ -137,7 +137,7 @@
             // 
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(784, 12);
+            this.pictureBox2.Location = new System.Drawing.Point(926, 12);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(68, 69);
             this.pictureBox2.TabIndex = 41;
@@ -146,7 +146,7 @@
             // lblTotalClientes
             // 
             this.lblTotalClientes.AutoSize = true;
-            this.lblTotalClientes.Location = new System.Drawing.Point(703, 164);
+            this.lblTotalClientes.Location = new System.Drawing.Point(815, 164);
             this.lblTotalClientes.Name = "lblTotalClientes";
             this.lblTotalClientes.Size = new System.Drawing.Size(35, 13);
             this.lblTotalClientes.TabIndex = 49;
@@ -156,7 +156,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(897, 521);
+            this.ClientSize = new System.Drawing.Size(1006, 580);
             this.Controls.Add(this.lblTotalClientes);
             this.Controls.Add(this.btnRefrescar);
             this.Controls.Add(this.label2);

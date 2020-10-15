@@ -37,10 +37,11 @@
             this.botonEditarListado = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.dataListadoClientes = new System.Windows.Forms.DataGridView();
+            this.dataListadoPlanes = new System.Windows.Forms.DataGridView();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataListadoClientes)).BeginInit();
+            this.cbIncluyeBajas = new System.Windows.Forms.CheckBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListadoPlanes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,6 +53,7 @@
             this.btnRefrescar.Size = new System.Drawing.Size(31, 32);
             this.btnRefrescar.TabIndex = 51;
             this.btnRefrescar.UseVisualStyleBackColor = true;
+            this.btnRefrescar.Click += new System.EventHandler(this.btnRefrescar_Click);
             // 
             // label2
             // 
@@ -114,23 +116,23 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             // 
-            // dataListadoClientes
+            // dataListadoPlanes
             // 
-            this.dataListadoClientes.AllowUserToAddRows = false;
-            this.dataListadoClientes.AllowUserToDeleteRows = false;
-            this.dataListadoClientes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataListadoPlanes.AllowUserToAddRows = false;
+            this.dataListadoPlanes.AllowUserToDeleteRows = false;
+            this.dataListadoPlanes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataListadoClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataListadoClientes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataListadoClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataListadoClientes.Location = new System.Drawing.Point(12, 168);
-            this.dataListadoClientes.MultiSelect = false;
-            this.dataListadoClientes.Name = "dataListadoClientes";
-            this.dataListadoClientes.ReadOnly = true;
-            this.dataListadoClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListadoClientes.Size = new System.Drawing.Size(840, 310);
-            this.dataListadoClientes.TabIndex = 43;
+            this.dataListadoPlanes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataListadoPlanes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataListadoPlanes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataListadoPlanes.Location = new System.Drawing.Point(12, 168);
+            this.dataListadoPlanes.MultiSelect = false;
+            this.dataListadoPlanes.Name = "dataListadoPlanes";
+            this.dataListadoPlanes.ReadOnly = true;
+            this.dataListadoPlanes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataListadoPlanes.Size = new System.Drawing.Size(867, 329);
+            this.dataListadoPlanes.TabIndex = 43;
             // 
             // pictureBox2
             // 
@@ -152,11 +154,22 @@
             this.label1.TabIndex = 41;
             this.label1.Text = "Planes";
             // 
+            // cbIncluyeBajas
+            // 
+            this.cbIncluyeBajas.AutoSize = true;
+            this.cbIncluyeBajas.Location = new System.Drawing.Point(653, 117);
+            this.cbIncluyeBajas.Name = "cbIncluyeBajas";
+            this.cbIncluyeBajas.Size = new System.Drawing.Size(89, 17);
+            this.cbIncluyeBajas.TabIndex = 52;
+            this.cbIncluyeBajas.Text = "Incluye Bajas";
+            this.cbIncluyeBajas.UseVisualStyleBackColor = true;
+            // 
             // formPlanes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(891, 509);
+            this.Controls.Add(this.cbIncluyeBajas);
             this.Controls.Add(this.btnRefrescar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblTotalClientes);
@@ -165,14 +178,15 @@
             this.Controls.Add(this.botonEditarListado);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnBuscar);
-            this.Controls.Add(this.dataListadoClientes);
+            this.Controls.Add(this.dataListadoPlanes);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "formPlanes";
             this.Text = "                                                                                 " +
     "                              ..:: Planes ::..";
-            ((System.ComponentModel.ISupportInitialize)(this.dataListadoClientes)).EndInit();
+            this.Load += new System.EventHandler(this.formPlanes_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataListadoPlanes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -189,8 +203,9 @@
         private System.Windows.Forms.Button botonEditarListado;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.DataGridView dataListadoClientes;
+        private System.Windows.Forms.DataGridView dataListadoPlanes;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox cbIncluyeBajas;
     }
 }

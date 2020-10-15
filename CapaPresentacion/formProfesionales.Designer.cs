@@ -52,7 +52,6 @@
             this.btnRefrescar.Size = new System.Drawing.Size(31, 32);
             this.btnRefrescar.TabIndex = 51;
             this.btnRefrescar.UseVisualStyleBackColor = true;
-            // this.btnRefrescar.Click += new System.EventHandler(this.btnRefrescar_Click_1);
             // 
             // label2
             // 
