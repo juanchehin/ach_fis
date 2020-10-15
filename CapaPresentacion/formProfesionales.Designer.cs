@@ -40,6 +40,7 @@
             this.dataListadoProfesionales = new System.Windows.Forms.DataGridView();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.cbIncluyeBajas = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoProfesionales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -153,11 +154,22 @@
             this.label1.TabIndex = 41;
             this.label1.Text = "Profesionales";
             // 
+            // cbIncluyeBajas
+            // 
+            this.cbIncluyeBajas.AutoSize = true;
+            this.cbIncluyeBajas.Location = new System.Drawing.Point(707, 114);
+            this.cbIncluyeBajas.Name = "cbIncluyeBajas";
+            this.cbIncluyeBajas.Size = new System.Drawing.Size(89, 17);
+            this.cbIncluyeBajas.TabIndex = 52;
+            this.cbIncluyeBajas.Text = "Incluye Bajas";
+            this.cbIncluyeBajas.UseVisualStyleBackColor = true;
+            // 
             // formProfesionales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(922, 477);
+            this.Controls.Add(this.cbIncluyeBajas);
             this.Controls.Add(this.btnRefrescar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblTotalProfesionales);
@@ -194,5 +206,6 @@
         private System.Windows.Forms.DataGridView dataListadoProfesionales;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox cbIncluyeBajas;
     }
 }

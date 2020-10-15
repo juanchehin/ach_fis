@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="formNuevoEditarProfesional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formNuevoEditarProfesional.Designer.cs">
+      <DependentUpon>formNuevoEditarProfesional.cs</DependentUpon>
+    </Compile>
     <Compile Include="program.cs" />
     <Compile Include="formAcercaDe.cs">
       <SubType>Form</SubType>
@@ -117,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formLogin.resx">
       <DependentUpon>formLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formNuevoEditarProfesional.resx">
+      <DependentUpon>formNuevoEditarProfesional.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formPlanes.resx">
       <DependentUpon>formPlanes.cs</DependentUpon>

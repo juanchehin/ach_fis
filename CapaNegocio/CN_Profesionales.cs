@@ -36,43 +36,48 @@ namespace CapaNegocio
             return "ok"; //.Insertar(Obj);
         }
         
-        public DataTable DameProfesionales()
+        public DataTable DameProfesionales(bool incluyeBajas)
         {
 
             DataTable tabla = new DataTable();
-            tabla = objetoCD.DameProfesionales();
+            tabla = objetoCD.DameProfesionales(incluyeBajas);
             return tabla;
         }
-        /*
-        public static string Eliminar(int IdEmpleado)
+        
+        public static string Eliminar(int IdProfesional)
         {
-            CD_Empleados Obj = new CD_Empleados();
-            Obj.IdEmpleado = IdEmpleado;
+            CD_Profesionales Obj = new CD_Profesionales();
+            Obj.IdProfesional = IdProfesional;
             return Obj.Eliminar(Obj);
         }
 
-        public DataTable MostrarEmpleado(int IdEmpleado)
+        public DataTable MostrarProfesional(int IdProfesional)
         {
 
             DataTable tabla = new DataTable();
-            tabla = objetoCD.MostrarEmpleado(IdEmpleado);
+            tabla = objetoCD.DameProfesional(IdProfesional);
             Console.WriteLine("tabla TableName en capa negocio es : " + tabla.TableName);
             Console.WriteLine("tabla Rows en capa negocio es : " + tabla.Rows);
             return tabla;
         }
 
-        public static string Editar(int IdEmpleado, string Nombre, string Apellidos, string DNI, string Direccion, string Telefono, string FechaNac)
+        public static string Editar(int IdProfesional,string Apellidos, string Nombres, string Sexo,DateTime FechaNac,
+            string Telefono, string Email,string Localidad,string Calle,string DNI,string EstadoPer,string Observaciones)
         {
             // Console.WriteLine("Produco.IdProducto es 2 : " + IdProducto);
-            CD_Empleados Obj = new CD_Empleados();
-            Obj.IdEmpleado = IdEmpleado;
-
-            Obj.Nombre = Nombre;
+            CD_Profesionales Obj = new CD_Profesionales();
+            Obj.IdProfesional = IdProfesional;
             Obj.Apellidos = Apellidos;
-            Obj.DNI = DNI;
-            Obj.Direccion = Direccion;
-            Obj.Telefono = Telefono;
+            Obj.Nombres = Nombres;
+            Obj.Sexo = Sexo;
             Obj.FechaNac = FechaNac;
+            Obj.Telefono = Telefono;
+            Obj.Email = Email;
+            Obj.Localidad = Localidad;
+            Obj.Calle = Calle;
+            Obj.DNI = DNI;
+            Obj.EstadoPer = EstadoPer;
+            Obj.Observaciones = Observaciones;
 
             // Console.WriteLine("Produco.IdProducto es 3 : " + IdProducto);
 
@@ -82,11 +87,10 @@ namespace CapaNegocio
         public DataTable BuscarEmpleado(string textobuscar)
         {
             Console.WriteLine("textobuscar en capa negocio es : " + textobuscar);
-            CD_Empleados Obj = new CD_Empleados();
+            CD_Profesionales Obj = new CD_Profesionales();
             Obj.TextoBuscar = textobuscar;
-            return Obj.BuscarEmpleado(Obj);
+            return Obj.BuscarProfesional(Obj);
         }
 
-        */
     }
 }

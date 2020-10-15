@@ -26,7 +26,7 @@ namespace CapaPresentacion
         }
         private void DameProfesionales()
         {
-            dataListadoProfesionales.DataSource = objetoCN.DameProfesionales();
+            dataListadoProfesionales.DataSource = objetoCN.DameProfesionales(this.cbIncluyeBajas.Checked);
             // Oculto el IdEmpleado. Lo puedo seguir usando como parametro de eliminacion
             dataListadoProfesionales.Columns[0].Visible = false;
             lblTotalProfesionales.Text = "Total de Registros: " + Convert.ToString(dataListadoProfesionales.Rows.Count);
@@ -64,10 +64,10 @@ namespace CapaPresentacion
 
         private void BuscarProfesional()
         {
-            /*Console.WriteLine("this.txtBuscar.Text es " + this.txtBuscar.Text);
+            Console.WriteLine("this.txtBuscar.Text es " + this.txtBuscar.Text);
             this.dataListadoProfesionales.DataSource = objetoCN.BuscarEmpleado(this.txtBuscar.Text);
             // this.OcultarColumnas();
-            lblTotalProfesionales.Text = "Total de Registros: " + Convert.ToString(dataListadoProfesionales.Rows.Count);*/
+            lblTotalProfesionales.Text = "Total de Registros: " + Convert.ToString(dataListadoProfesionales.Rows.Count);
         }
 
         private void btnNuevoProfesional_Click(object sender, EventArgs e)
@@ -81,15 +81,15 @@ namespace CapaPresentacion
 
         private void btnEliminar_Click_1(object sender, EventArgs e)
         {
-            /*try
+            try
             {
                 DialogResult Opcion;
-                Opcion = MessageBox.Show("Realmente Desea Eliminar al profesional", "Gimnasio", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                Opcion = MessageBox.Show("Realmente Desea Eliminar al profesional", "Act Fis", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
                 if (Opcion == DialogResult.OK)
                 {
                     Console.WriteLine("El IdProfesional en eliminar es " + this.idProfesional);
-                    CN_Empleados.Eliminar(this.idProfesional);
+                    CN_Profesionales.Eliminar(this.idProfesional);
                     this.DameProfesionales();
                     this.MensajeOk("Se elimino de forma correcta el registro");
                 }
@@ -98,7 +98,7 @@ namespace CapaPresentacion
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
-            }*/
+            }
         }
 
         private void dataListadoProfesionales_SelectionChanged(object sender, EventArgs e)

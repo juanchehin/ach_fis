@@ -50,7 +50,7 @@ namespace CapaDatos
 
         }
 
-        /*public CD_Profesionales(int IdProfesional, string Nombres, string Apellidos, string DNI, string EstadoPer,
+        public CD_Profesionales(int IdProfesional, string Nombres, string Apellidos, string DNI, string EstadoPer,
             string Telefono, DateTime FechaNac,string Observaciones)
         {
             this.IdProfesional = IdProfesional;
@@ -63,7 +63,7 @@ namespace CapaDatos
             this.FechaNac = FechaNac;
             this.Observaciones = Observaciones;
 
-        }*/
+        }
 
         // ==================================================
         //  Permite devolver todos los profeisonales activos de la BD
@@ -75,12 +75,18 @@ namespace CapaDatos
         MySqlCommand comando = new MySqlCommand();
 
 
-        public DataTable DameProfesionales()
+        public DataTable DameProfesionales(bool incluyeBajas)
         {
-
             comando.Connection = conexion.AbrirConexion();
             comando.CommandType = CommandType.StoredProcedure;
             comando.CommandText = "bsp_dame_profesionales";
+
+            MySqlParameter pIncluyeBajas = new MySqlParameter();
+            pIncluyeBajas.ParameterName = "@pIncluyeBajas";
+            pIncluyeBajas.MySqlDbType = MySqlDbType.VarChar;
+            // pNombre.Size = 60;
+            pIncluyeBajas.Value = incluyeBajas;
+            comando.Parameters.Add(pIncluyeBajas);
 
             tabla.Clear();
             leer = comando.ExecuteReader();
@@ -94,58 +100,95 @@ namespace CapaDatos
         // =========================================
         // Metodo insertar profesional 
         // =========================================
-        /*public string Insertar(CD_Profesionales Profesional)
+        public string Insertar(CD_Profesionales Profesional)
         {
             string rpta = "";
             try
             {
                 comando.Connection = conexion.AbrirConexion();
                 comando.CommandType = CommandType.StoredProcedure;
-                comando.CommandText = "bsp_alta_empleado";
-
-                MySqlParameter pNombre = new MySqlParameter();
-                pNombre.ParameterName = "@pNombre";
-                pNombre.MySqlDbType = MySqlDbType.VarChar;
-                pNombre.Size = 60;
-                pNombre.Value = Empleado.Nombre;
-                comando.Parameters.Add(pNombre);
-
+                comando.CommandText = "bsp_alta_profesional";
                 // Console.WriteLine("pNombre es : " + pNombre.Value);
 
                 MySqlParameter pApellidos = new MySqlParameter();
                 pApellidos.ParameterName = "@pApellidos";
                 pApellidos.MySqlDbType = MySqlDbType.VarChar;
                 pApellidos.Size = 60;
-                pApellidos.Value = Empleado.Apellidos;
+                pApellidos.Value = Profesional.Apellidos;
                 comando.Parameters.Add(pApellidos);
+
+                MySqlParameter pNombres = new MySqlParameter();
+                pNombres.ParameterName = "@pNombres";
+                pNombres.MySqlDbType = MySqlDbType.VarChar;
+                pNombres.Size = 60;
+                pNombres.Value = Profesional.Nombres;
+                comando.Parameters.Add(pNombres);
+
+                MySqlParameter pSexo = new MySqlParameter();
+                pSexo.ParameterName = "@pSexo";
+                pSexo.MySqlDbType = MySqlDbType.VarChar;
+                pSexo.Size = 1;
+                pSexo.Value = Profesional.Sexo;
+                comando.Parameters.Add(pSexo);
+
+
+                MySqlParameter pFechaNac = new MySqlParameter();
+                pFechaNac.ParameterName = "@pFechaNac";
+                pFechaNac.MySqlDbType = MySqlDbType.Date;
+                // pFechaNac.Size = 40;
+                pFechaNac.Value = Profesional.FechaNac;
+                comando.Parameters.Add(pFechaNac);
+
+                MySqlParameter pTelefono = new MySqlParameter();
+                pTelefono.ParameterName = "@pTelefono";
+                pTelefono.MySqlDbType = MySqlDbType.Int32;
+                pTelefono.Size = 11;
+                pTelefono.Value = Profesional.Telefono;
+                comando.Parameters.Add(pTelefono);
+
+
+                MySqlParameter pEmail = new MySqlParameter();
+                pEmail.ParameterName = "@pEmail";
+                pEmail.MySqlDbType = MySqlDbType.VarChar;
+                pEmail.Size = 60;
+                pEmail.Value = Profesional.Email;
+                comando.Parameters.Add(pEmail);
+
+                MySqlParameter pLocalidad = new MySqlParameter();
+                pLocalidad.ParameterName = "@pLocalidad";
+                pLocalidad.MySqlDbType = MySqlDbType.VarChar;
+                pLocalidad.Size = 70;
+                pLocalidad.Value = Profesional.Localidad;
+                comando.Parameters.Add(pLocalidad);
+
+                MySqlParameter pCalle = new MySqlParameter();
+                pCalle.ParameterName = "@pCalle";
+                pCalle.MySqlDbType = MySqlDbType.VarChar;
+                pCalle.Size = 60;
+                pCalle.Value = Profesional.Calle;
+                comando.Parameters.Add(pCalle);
 
                 MySqlParameter pDNI = new MySqlParameter();
                 pDNI.ParameterName = "@pDNI";
                 pDNI.MySqlDbType = MySqlDbType.VarChar;
                 pDNI.Size = 45;
-                pDNI.Value = Empleado.DNI;
+                pDNI.Value = Profesional.DNI;
                 comando.Parameters.Add(pDNI);
 
-                MySqlParameter pDireccion = new MySqlParameter();
-                pDireccion.ParameterName = "@pDireccion";
-                pDireccion.MySqlDbType = MySqlDbType.VarChar;
-                pDireccion.Size = 40;
-                pDireccion.Value = Empleado.Direccion;
-                comando.Parameters.Add(pDireccion);
+                /*MySqlParameter pEstadoPer = new MySqlParameter();
+                pEstadoPer.ParameterName = "@pEstadoPer";
+                pEstadoPer.MySqlDbType = MySqlDbType.VarChar;
+                pEstadoPer.Size = 1;
+                pEstadoPer.Value = Profesional.EstadoPer;
+                comando.Parameters.Add(pEstadoPer);*/
 
-                MySqlParameter pTelefono = new MySqlParameter();
-                pTelefono.ParameterName = "@pTelefono";
-                pTelefono.MySqlDbType = MySqlDbType.VarChar;
-                pTelefono.Size = 15;
-                pTelefono.Value = Empleado.Telefono;
-                comando.Parameters.Add(pTelefono);
+                MySqlParameter pObservaciones = new MySqlParameter();
+                pObservaciones.ParameterName = "@pObservaciones";
+                pObservaciones.MySqlDbType = MySqlDbType.VarChar;
+                pObservaciones.Size = 255;
+                pObservaciones.Value = Profesional.Observaciones;
+                comando.Parameters.Add(pObservaciones);
 
-                MySqlParameter pFechaNac = new MySqlParameter();
-                pFechaNac.ParameterName = "@pFechaNac";
-                pFechaNac.MySqlDbType = MySqlDbType.VarChar;
-                pFechaNac.Size = 40;
-                pFechaNac.Value = Empleado.FechaNac;
-                comando.Parameters.Add(pFechaNac);
 
 
                 // Console.WriteLine("el comando es : " + comando.CommandText[0]);
@@ -165,7 +208,7 @@ namespace CapaDatos
             }
             return rpta;
 
-        }*/
+        }
         // =========================================
         // Metodo ELIMINAR profesional (da de baja)
         // =========================================
@@ -174,8 +217,6 @@ namespace CapaDatos
             string rpta = "";
             try
             {
-
-
                 comando.Connection = conexion.AbrirConexion();
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.CommandText = "bsp_eliminar_profesional";
@@ -207,7 +248,7 @@ namespace CapaDatos
         // =========================================
         // Edita un profesional
         // =========================================
-        /*public string Editar(CD_Profesionales Profesional)
+        public string Editar(CD_Profesionales Profesional)
         {
             Console.WriteLine("Produco.IdProducto es 1 : " + Profesional.IdProfesional);
             string rpta = "";
@@ -218,55 +259,84 @@ namespace CapaDatos
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.CommandText = "bsp_editar_empleado";
 
-                MySqlParameter pIdEmpleado = new MySqlParameter();
-                pIdEmpleado.ParameterName = "@pIdEmpleado";
-                pIdEmpleado.MySqlDbType = MySqlDbType.Int32;
-                // pIdEmpleado.Size = 60;
-                pIdEmpleado.Value = Empleado.IdEmpleado;
-                comando.Parameters.Add(pIdEmpleado);
-
-                MySqlParameter pNombre = new MySqlParameter();
-                pNombre.ParameterName = "@pNombre";
-                pNombre.MySqlDbType = MySqlDbType.VarChar;
-                pNombre.Size = 60;
-                pNombre.Value = Empleado.Nombre;
-                comando.Parameters.Add(pNombre);
-
                 MySqlParameter pApellidos = new MySqlParameter();
                 pApellidos.ParameterName = "@pApellidos";
                 pApellidos.MySqlDbType = MySqlDbType.VarChar;
                 pApellidos.Size = 60;
-                pApellidos.Value = Empleado.Apellidos;
+                pApellidos.Value = Profesional.Apellidos;
                 comando.Parameters.Add(pApellidos);
+
+                MySqlParameter pNombres = new MySqlParameter();
+                pNombres.ParameterName = "@pNombres";
+                pNombres.MySqlDbType = MySqlDbType.VarChar;
+                pNombres.Size = 60;
+                pNombres.Value = Profesional.Nombres;
+                comando.Parameters.Add(pNombres);
+
+                MySqlParameter pSexo = new MySqlParameter();
+                pSexo.ParameterName = "@pSexo";
+                pSexo.MySqlDbType = MySqlDbType.VarChar;
+                pSexo.Size = 1;
+                pSexo.Value = Profesional.Sexo;
+                comando.Parameters.Add(pSexo);
+
+
+                MySqlParameter pFechaNac = new MySqlParameter();
+                pFechaNac.ParameterName = "@pFechaNac";
+                pFechaNac.MySqlDbType = MySqlDbType.Date;
+                // pFechaNac.Size = 40;
+                pFechaNac.Value = Profesional.FechaNac;
+                comando.Parameters.Add(pFechaNac);
+
+                MySqlParameter pTelefono = new MySqlParameter();
+                pTelefono.ParameterName = "@pTelefono";
+                pTelefono.MySqlDbType = MySqlDbType.Int32;
+                pTelefono.Size = 11;
+                pTelefono.Value = Profesional.Telefono;
+                comando.Parameters.Add(pTelefono);
+
+
+                MySqlParameter pEmail = new MySqlParameter();
+                pEmail.ParameterName = "@pEmail";
+                pEmail.MySqlDbType = MySqlDbType.VarChar;
+                pEmail.Size = 60;
+                pEmail.Value = Profesional.Email;
+                comando.Parameters.Add(pEmail);
+
+                MySqlParameter pLocalidad = new MySqlParameter();
+                pLocalidad.ParameterName = "@pLocalidad";
+                pLocalidad.MySqlDbType = MySqlDbType.VarChar;
+                pLocalidad.Size = 70;
+                pLocalidad.Value = Profesional.Localidad;
+                comando.Parameters.Add(pLocalidad);
+
+                MySqlParameter pCalle = new MySqlParameter();
+                pCalle.ParameterName = "@pCalle";
+                pCalle.MySqlDbType = MySqlDbType.VarChar;
+                pCalle.Size = 60;
+                pCalle.Value = Profesional.Calle;
+                comando.Parameters.Add(pCalle);
 
                 MySqlParameter pDNI = new MySqlParameter();
                 pDNI.ParameterName = "@pDNI";
                 pDNI.MySqlDbType = MySqlDbType.VarChar;
                 pDNI.Size = 45;
-                pDNI.Value = Empleado.DNI;
+                pDNI.Value = Profesional.DNI;
                 comando.Parameters.Add(pDNI);
 
-                MySqlParameter pDireccion = new MySqlParameter();
-                pDireccion.ParameterName = "@pDireccion";
-                pDireccion.MySqlDbType = MySqlDbType.VarChar;
-                pDireccion.Size = 60;
-                pDireccion.Value = Empleado.Direccion;
-                comando.Parameters.Add(pDireccion);
+                MySqlParameter pEstadoPer = new MySqlParameter();
+                pEstadoPer.ParameterName = "@pEstadoPer";
+                pEstadoPer.MySqlDbType = MySqlDbType.VarChar;
+                pEstadoPer.Size = 1;
+                pEstadoPer.Value = Profesional.EstadoPer;
+                comando.Parameters.Add(pEstadoPer);
 
-                MySqlParameter pTelefono = new MySqlParameter();
-                pTelefono.ParameterName = "@pTelefono";
-                pTelefono.MySqlDbType = MySqlDbType.VarChar;
-                pTelefono.Size = 15;
-                pTelefono.Value = Empleado.Telefono;
-                comando.Parameters.Add(pTelefono);
-
-                MySqlParameter pFechaNac = new MySqlParameter();
-                pFechaNac.ParameterName = "@pFechaNac";
-                pFechaNac.MySqlDbType = MySqlDbType.VarChar;
-                pFechaNac.Size = 60;
-                pFechaNac.Value = Empleado.FechaNac;
-                comando.Parameters.Add(pFechaNac);
-
+                MySqlParameter pObservaciones = new MySqlParameter();
+                pObservaciones.ParameterName = "@pObservaciones";
+                pObservaciones.MySqlDbType = MySqlDbType.VarChar;
+                pObservaciones.Size = 255;
+                pObservaciones.Value = Profesional.Observaciones;
+                comando.Parameters.Add(pObservaciones);
 
 
                 // Console.WriteLine("comando.Executeexe() es : " + comando.ExecuteReader().ToString());
@@ -293,23 +363,23 @@ namespace CapaDatos
             }
             comando.Parameters.Clear();
             return rpta;
-        }*/
+        }
         // =========================================
         // Busca un solo profesional
         // =========================================
-        /*public DataTable BuscarEmpleado(CD_Profesionales Profesional)
+        public DataTable BuscarProfesional(CD_Profesionales Profesional)
         {
             try
             {
                 comando.Connection = conexion.AbrirConexion();
                 comando.CommandType = CommandType.StoredProcedure;
-                comando.CommandText = "bsp_buscar_empleado";
+                comando.CommandText = "bsp_buscar_profesional";
 
                 MySqlParameter pTextoBuscar = new MySqlParameter();
                 pTextoBuscar.ParameterName = "@pTextoBuscar";
                 pTextoBuscar.MySqlDbType = MySqlDbType.VarChar;
                 pTextoBuscar.Size = 30;
-                pTextoBuscar.Value = Empleado.TextoBuscar;
+                pTextoBuscar.Value = Profesional.TextoBuscar;
                 comando.Parameters.Add(pTextoBuscar);
 
                 leer = comando.ExecuteReader();
@@ -330,11 +400,11 @@ namespace CapaDatos
             }
             return tabla;
 
-        }*/
+        }
         // =========================================
         // Devuelve un solo profesional dado un ID
         // =========================================
-        /*public DataTable DameProfesional(int IdProfesional)
+        public DataTable DameProfesional(int IdProfesional)
         {
             Console.WriteLine("IdProfesional en capa datos es : " + IdProfesional);
             comando.Connection = conexion.AbrirConexion();
@@ -358,7 +428,5 @@ namespace CapaDatos
             return tabla;
 
         }
-
-        */
     }
 }
